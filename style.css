@@ -1,0 +1,319 @@
+/* =======================================================
+   STYLE.CSS — unified for index.html & result.html
+   Light blue theme, animations, responsive
+   ======================================================= */
+
+/* ---------- Basic reset & font ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body{
+  font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #8ecfc7cf 0%, #f7fbff 100%);
+  color: #03314b;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.4;
+}
+
+/* ---------- layout container ---------- */
+.container{
+  width: min(1150px, 94%);
+  margin: 28px auto;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar{
+  background: #d8f0ff;            /* light blue top */
+  padding: 12px 0;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(3,49,78,0.06);
+}
+
+/* support multiple markup variations from your templates */
+.nav-container, .nav-flex, .container.nav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+
+/* Title centered */
+.nav-title{
+  font-size: 20px;
+  font-weight: 700;
+  color: #668ba5;
+  text-align: center;
+  margin: 6px 0;
+  letter-spacing: 0.2px;
+  flex: 1 1 auto;
+}
+
+/* subtle subtitle (if used) */
+.nav-subtitle {
+  font-size: 13px;
+  color: #064a73;
+  text-align: center;
+  opacity: 0.95;
+  margin-top: 2px;
+}
+
+/* Left and Right nav groups (help/contact on right in your requirement) */
+.nav-buttons-left,
+.nav-buttons {
+  position: absolute;
+  right: 18px;                 /* by default right side */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+/* if you have left buttons container - use left alignment */
+.nav-buttons-left { right: 18px; }
+
+/* nav buttons style */
+.nav-btn, .nav-buttons a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  background: linear-gradient(90deg,#007fbf,#006aa6);
+  box-shadow: 0 6px 14px rgba(0,98,160,0.12);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s;
+}
+.nav-btn:hover, .nav-buttons a:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,98,160,0.14); }
+
+/* Make sure nav title stays centered when buttons exist */
+.nav-container .nav-title { margin: 0 auto; max-width: 720px; }
+
+/* ---------- THREE-COLUMN LAYOUT ---------- */
+.three-column {
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 22px;
+  align-items: start;
+  margin-top: 22px;
+}
+
+/* side boxes (left/right) */
+.side-box {
+  background: #e9f8ff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(3,49,78,0.05);
+  min-height: 140px;
+}
+
+/* slightly smaller boxes for content sized to points */
+.small-box { padding: 14px; }
+
+/* side titles */
+.side-title {
+  font-size: 15px;
+  color: #01405f;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* side step items */
+.side-step {
+  background: linear-gradient(90deg,#d8f6ff,#c6ecff);
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  color: #003a63;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(3,49,78,0.04);
+}
+
+/* ---------- UPLOAD / CENTER SECTION ---------- */
+.upload-section {
+  background: #ffffff;
+  padding: 26px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(3,49,78,0.06);
+  text-align: center;
+}
+
+/* headings in center area (caps as requested) */
+.center-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: #003a63;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+}
+
+/* descriptive subtext */
+.description {
+  font-size: 13px;
+  color: #225f78;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ---------- FORMS - smaller / narrow input boxes ---------- */
+.upload-form { max-width: 540px; margin: 0 auto; }
+
+.form-group { margin-bottom: 14px; text-align: left; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #044b6a;
+  margin-bottom: 8px;
+  letter-spacing: 0.6px;
+}
+
+/* narrow box to reduce width as you asked */
+.narrow-box { max-width: 420px; margin-left: auto; margin-right: auto; }
+
+/* select style */
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d7eefc;
+  background: linear-gradient(180deg,#fbfeff,#f6fbff);
+  font-weight: 700;
+  color: #033a56;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: box-shadow .16s, transform .12s;
+}
+.form-select:focus { outline: none; box-shadow: 0 8px 24px rgba(0,123,180,0.08); transform: translateY(-1px); }
+
+/* file upload wrapper */
+.file-upload-wrapper { display:block; position:relative; }
+
+/* invisible file input */
+.file-input { position: absolute; left:0; top:0; width:1px; height:1px; opacity:0; pointer-events:none; }
+
+/* fake file label button */
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  background: linear-gradient(90deg,#90caf9,#6fb1f7);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(6,94,146,0.10);
+}
+.file-label:hover { transform: translateY(-4px); }
+
+/* small help text */
+.form-help { display:block; margin-top:8px; color:#3f6a7f; font-size:12px; font-weight:600; }
+
+/* preview image */
+.file-preview { margin-top: 12px; text-align:center; }
+.preview-image {
+  max-width: 250px;
+  max-height: 220px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,60,120,0.08);
+  border: 6px solid rgba(217,243,255,0.8);
+}
+
+/* submit button */
+.btn-submit {
+  margin-top: 14px;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 900;
+  border-radius: 12px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(90deg,#007fbf,#006aa6);
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  box-shadow: 0 12px 28px rgba(0,86,150,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-submit:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,86,150,0.14); }
+
+/* ---------- CROP GRID (if you use earlier crop-card markup) ---------- */
+.crop-grid { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin-top:28px; }
+.crop-card { width: 220px; padding:22px; border-radius:14px; background: #cfeefe; text-align:center; text-decoration:none; color:#003a63; box-shadow:0 8px 26px rgba(0,60,120,0.06); transition:transform .18s; }
+.crop-card:hover { transform: translateY(-8px); }
+
+/* ---------- RESULT / PREDICTION PAGE ---------- */
+.result-container { width: min(950px,94%); margin: 28px auto; }
+
+/* header row */
+.result-header { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:18px; }
+.section-heading { font-size:20px; font-weight:900; color:#003a63; }
+
+/* back button */
+.btn-back { padding:8px 12px; border-radius:10px; text-decoration:none; color:#fff; background:#006a9a; font-weight:800; }
+
+/* result card */
+.result-card {
+  padding: 20px;
+  border-radius:12px;
+  background: linear-gradient(180deg,#e7f6ff,#ffffff);
+  box-shadow: 0 14px 36px rgba(0,60,120,0.06);
+  margin-bottom: 14px;
+}
+.crop-title { font-size: 16px; font-weight:800; color:#05496f; margin-bottom:8px; }
+
+/* prediction box inside card */
+.prediction-box { text-align:center; padding: 8px 6px; }
+.disease-name { font-size: 28px; font-weight:900; color:#023e63; margin-bottom:8px; }
+
+/* confidence */
+.confidence-box { font-weight:800; color:#044b6a; font-size:16px; margin-bottom:10px; }
+.confidence-bar-wrapper { width:100%; height:14px; background:#d7f0ff; border-radius:10px; overflow:hidden; }
+.confidence-bar { height:100%; background: linear-gradient(90deg,#007fbf,#005f9a); width:0%; transition:width 1.2s ease; }
+
+/* tips cards */
+.tips-card { margin-top:18px; padding:14px; background:#fff; border-radius:10px; box-shadow:0 8px 20px rgba(3,49,78,0.04); }
+.tips-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.tips-icon { font-size:18px; }
+.tips-header h4 { font-size:16px; font-weight:900; color:#023e63; }
+
+/* list style */
+.tips-list { margin-left:18px; margin-top:6px; color:#113b49; font-size:14px; }
+.tips-list li { margin-bottom:8px; line-height:1.5; }
+
+/* primary action */
+.btn-primary { display:inline-block; padding:10px 16px; border-radius:10px; text-decoration:none; background:linear-gradient(90deg,#007fbf,#006aa6); color:#fff; font-weight:800; }
+
+/* ---------- FOOTER ---------- */
+.footer { margin-top: 30px; padding: 18px 0; background: #e0f4ff; text-align:center; border-radius:10px; color:#023e63; font-weight:700; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 980px) {
+  .three-column { grid-template-columns: 1fr; }
+  .nav-buttons, .nav-buttons-left { position: static; transform:none; margin-left:auto; display:flex; justify-content:flex-end; margin-top:8px; }
+  .nav-container .nav-title { order: 2; width:100%; text-align:center; }
+  .side-box { display:flex; flex-direction:row; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .upload-section { margin-top: 12px; }
+  .narrow-box { max-width: 100%; padding: 0 8px; }
+  .preview-image { max-width: 100%; height: auto; }
+  .result-container { width: 96%; }
+}
+
+/* ---------- tiny screens ---------- */
+@media (max-width:480px) {
+  .nav-title { font-size: 16px; }
+  .btn-submit { font-size: 14px; padding: 11px; }
+  .disease-name { font-size: 20px; }
+}
+
+/* ---------- helper: set confidence bar width via inline style (already used) ---------- */

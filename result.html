@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results - AI Crop Disease Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fade-in">
+        <div class="container nav-flex">
+
+            <!-- Left Buttons -->
+            <div class="nav-buttons-left">
+                <a href="/" class="nav-btn">HOME</a>
+                <a href="#" class="nav-btn">HELP</a>
+                <a href="#" class="nav-btn">CONTACT</a>
+            </div>
+
+            <h1 class="nav-title">🌾 AI CROP DISEASE PREDICTION AND MANAGEMENT</h1>
+        </div>
+    </nav>
+
+    <!-- RESULT PAGE BODY -->
+    <div class="result-layout fade-up">
+
+        <!-- RESULT CARD -->
+        <div class="result-card">
+
+            <h2 class="result-title">PREDICTION RESULTS</h2>
+
+            <h3 class="crop-type">Crop Type: <span>{{ crop_type }}</span></h3>
+
+            <h2 class="disease-name">{{ disease_name }}</h2>
+
+            <div class="confidence-box">
+                <p>CONFIDENCE: <b>{{ "%.2f"|format(confidence) }}%</b></p>
+                <div class="confidence-bar-wrapper">
+                    <div class="confidence-bar" style="width: {{ confidence }}%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANAGEMENT SECTION -->
+        <div class="management-section">
+
+            <h2 class="management-title">📋 DISEASE MANAGEMENT RECOMMENDATIONS</h2>
+
+            {% if prevention %}
+            <div class="tips-card fade-up">
+                <h3 class="tip-head">🛡️ Prevention Measures</h3>
+                <ul>
+                    {% for tip in prevention %}
+                    <li>{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if treatment %}
+            <div class="tips-card fade-up">
+                <h3 class="tip-head">💊 Treatment Methods</h3>
+                <ul>
+                    {% for tip in treatment %}
+                    <li>{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if pesticides %}
+            <div class="tips-card fade-up">
+                <h3 class="tip-head">🧪 Pesticide Suggestions</h3>
+                <ul>
+                    {% for tip in pesticides %}
+                    <li>{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if soil_recommendations %}
+            <div class="tips-card fade-up">
+                <h3 class="tip-head">🌱 Soil Recommendations</h3>
+                <ul>
+                    {% for tip in soil_recommendations %}
+                    <li>{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div class="center">
+            <a href="/" class="btn-submit">UPLOAD ANOTHER IMAGE</a>
+        </div>
+    </div>
+
+</body>
+</html>

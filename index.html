@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crop Disease Prediction and Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fade-in">
+        <div class="container nav-flex">
+
+            <!-- Left Buttons -->
+            <div class="nav-buttons-left">
+                <a href="#" class="nav-btn">HELP</a>
+                <a href="#" class="nav-btn">CONTACT</a>
+            </div>
+
+            <!-- Title -->
+            <h1 class="nav-title">🌾 AI CROP DISEASE DETECTION</h1>
+        </div>
+    </nav>
+
+    <!-- 3 Column Layout -->
+    <div class="three-column">
+
+        <!-- HOW IT WORKS -->
+        <div class="side-box left-box fade-up small-box">
+            <h2 class="side-title">HOW IT WORKS</h2>
+            <div class="side-step">1️⃣ SELECT CROP TYPE</div>
+            <div class="side-step">2️⃣ UPLOAD LEAF IMAGE</div>
+            <div class="side-step">3️⃣ AI ANALYZES IMAGE</div>
+            <div class="side-step">4️⃣ GET RESULT</div>
+        </div>
+
+        <!-- CENTER -->
+        <div class="upload-section fade-up">
+
+            <h2 class="center-text">UPLOAD CROP LEAF IMAGE</h2>
+            <p class="description center-text">SELECT YOUR CROP TYPE AND UPLOAD A CLEAR LEAF IMAGE</p>
+
+            <form action="/predict" method="POST" enctype="multipart/form-data" class="upload-form">
+
+                <div class="form-group fade-up narrow-box">
+                    <label>CHOOSE CROP TYPE:</label>
+                    <select name="crop_type" required class="form-select">
+                        <option value="">-- SELECT CROP TYPE --</option>
+                        
+                        <option value="tomato">🍅 TOMATO</option>
+                        <option value="chilly">🌶️ CHILLY</option>
+                        <option value="paddy">🌾 PADDY</option>
+                    </select>
+                </div>
+
+                <div class="form-group fade-up narrow-box">
+                    <label>UPLOAD LEAF IMAGE:</label>
+
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="file" name="file" accept="image/*" required class="file-input">
+                        <label for="file" class="file-label">
+                            <span class="file-icon">📁</span>
+                            <span class="file-text">CHOOSE IMAGE FILE</span>
+                        </label>
+                        <div class="file-preview" id="preview"></div>
+                    </div>
+
+                    <small class="form-help">SUPPORTED: PNG | JPG | JPEG (MAX 10MB)</small>
+                </div>
+
+                <button type="submit" class="btn-submit fade-up narrow-box">
+                    🔍 PREDICT DISEASE
+                </button>
+            </form>
+        </div>
+
+        <!-- WHY USE THIS -->
+        <div class="side-box right-box fade-up small-box">
+            <h2 class="side-title">WHY USE THIS?</h2>
+            <div class="side-step">⚡ INSTANT ANALYSIS</div>
+            <div class="side-step">✔ EASY TO USE</div>
+            <div class="side-step">🌱 PREVENT CROP LOSS</div>
+            <div class="side-step">🤖 AI ACCURACY</div>
+        </div>
+    </div>
+
+    <!-- Image Preview JS -->
+    <script>
+        const fileInput = document.getElementById('file');
+        const preview = document.getElementById('preview');
+
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.innerHTML = `<img src="${e.target.result}" class="preview-image fade-in">`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = "";
+            }
+        });
+    </script>
+
+</body>
+</html>
